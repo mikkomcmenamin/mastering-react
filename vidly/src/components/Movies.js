@@ -1,10 +1,22 @@
 import React, { Component, Fragment } from "react";
 import { getMovies } from "../services/fakeMovieService";
-import { deleteMovie } from "../services/fakeMovieService";
+import Heart from "./common/Heart";
 
 class Movies extends Component {
   state = {
     movies: getMovies()
+  };
+
+  onMovieDeleteButtonPressed = movie => {
+    const movies = this.state.movies.filter(m => m._id !== movie._id);
+    this.setState({ movies: movies });
+  };
+
+  handleLike = movie => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index].liked = !movies[index].liked;
+    this.setState({ movies });
   };
 
   render() {
@@ -22,7 +34,8 @@ class Movies extends Component {
               <th>Genre</th>
               <th>Stock</th>
               <th>Rate</th>
-              <th></th>
+              <th/>
+              <th/>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +45,7 @@ class Movies extends Component {
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
+                <td> <Heart liked={movie.liked} onClick={() => this.handleLike(movie)}/></td>
                 <td>
                   <button
                     type="button"
@@ -49,10 +63,7 @@ class Movies extends Component {
     );
   }
 
-  onMovieDeleteButtonPressed = movie => {
-    const movies = this.state.movies.filter(m => m._id !== movie._id);
-    this.setState({ movies: movies });
-  };
+
 }
 
 export default Movies;
