@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import Heart from "./common/Heart";
+import Pagination from "./common/Pagination";
 
 class Movies extends Component {
   state = {
-    movies: getMovies()
+    movies: getMovies(),
+    currentPage: 1,
+    pageSize: 4
   };
 
   onMovieDeleteButtonPressed = movie => {
@@ -19,8 +22,13 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
+  handlePageChange = page => {
+    this.setState({currentPage: page });
+  };
+
   render() {
     const { length: count } = this.state.movies;
+    const { pageSize, currentPage } = this.state; 
 
     if (count === 0) return <p> there are no movies in the database. </p>;
 
@@ -34,8 +42,8 @@ class Movies extends Component {
               <th>Genre</th>
               <th>Stock</th>
               <th>Rate</th>
-              <th/>
-              <th/>
+              <th />
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -45,7 +53,13 @@ class Movies extends Component {
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
-                <td> <Heart liked={movie.liked} onClick={() => this.handleLike(movie)}/></td>
+                <td>
+                  {" "}
+                  <Heart
+                    liked={movie.liked}
+                    onClick={() => this.handleLike(movie)}
+                  />
+                </td>
                 <td>
                   <button
                     type="button"
@@ -59,11 +73,15 @@ class Movies extends Component {
             ))}
           </tbody>
         </table>
+        <Pagination
+          itemsCount={count}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={this.handlePageChange}
+        />
       </Fragment>
     );
   }
-
-
 }
 
 export default Movies;
