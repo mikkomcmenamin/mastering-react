@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class ListGroup extends Component {
-    render() {
-        return (
-            <div className="list-group">
-                <a href="#" className="list-group-item list-group-item-action">All Genres</a>
+const ListGroup = props => {
+    const {genres, onGenreChange} = props;
 
-            </div>
-        );
-    }
-}
+    return (
+      <div className="list-group">
+          {genres.map(genre => (
+            <button key={genre._id} type="button" className="list-group-item list-group-item-action active" onClick={()=>onGenreChange}>
+                {genre.name}
+            </button>
+            )
+          )}
+          <button type="button" className="list-group-item list-group-item-action active" onClick={()=>onGenreChange}>
+              Cras justo odio
+          </button>
+      </div>
+    );
+};
 
 export default ListGroup;
