@@ -1,7 +1,14 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import authService from "./authService";
 
-axios.interceptors.response.use(null, error => {
+const instance = axios.create({
+  baseURL: 'https://localhost:3900',
+  timeout: 1000,
+  headers: {'x-auth-token': authService.getJwt()}
+});
+
+instance.interceptors.response.use(null, error => {
   const expectedError =
     error.response &&
     error.response.status >= 400 &&
@@ -15,8 +22,8 @@ axios.interceptors.response.use(null, error => {
 });
 
 export default {
-  get: axios.get,
-  post: axios.post,
-  put: axios.put,
-  delete: axios.delete
+  get: instance.get,
+  post: instance.post,
+  put: instance.put,
+  delete: instance.delete
 };

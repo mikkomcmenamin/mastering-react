@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import Input from "./common/input";
+import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { login } from "../services/authService";
+import authService from "../services/authService";
 
 class LoginForm extends Form {
   state = {
@@ -20,8 +19,10 @@ class LoginForm extends Form {
   doSubmit = async () => {
     try {
       const { username, password } = this.state.data;
-      const {data: jwt} = await login(username, password);
-      localStorage.setItem("token", jwt);
+      await authService.login(username, password);
+
+      const {state} = this.props.location;
+      window.location = state ? state.from.pathname : "/";
     } catch (e) {
       if (e.response && e.response.status === 400) {
         const errors = { ...this.state.errors };

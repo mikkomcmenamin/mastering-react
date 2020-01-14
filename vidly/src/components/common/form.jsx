@@ -32,9 +32,9 @@ class Form extends Component {
 
     const errors = {};
 
+    // eslint-disable-next-line no-unused-vars
     for (let item of error.details) {
       errors[item.path[0]] = item.message;
-      // console.log(errors[item.path[0]]);
     }
     return errors;
   };
