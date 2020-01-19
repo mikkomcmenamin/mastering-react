@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/mastering-react/static/css/main.e527cb9f.chunk.css",
+    "main.js": "/mastering-react/static/js/main.6c0f199f.chunk.js",
+    "main.js.map": "/mastering-react/static/js/main.6c0f199f.chunk.js.map",
+    "runtime~main.js": "/mastering-react/static/js/runtime~main.af4b1537.js",
+    "runtime~main.js.map": "/mastering-react/static/js/runtime~main.af4b1537.js.map",
+    "static/css/2.8a6da4b6.chunk.css": "/mastering-react/static/css/2.8a6da4b6.chunk.css",
+    "static/js/2.7fd570f2.chunk.js": "/mastering-react/static/js/2.7fd570f2.chunk.js",
+    "static/js/2.7fd570f2.chunk.js.map": "/mastering-react/static/js/2.7fd570f2.chunk.js.map",
+    "index.html": "/mastering-react/index.html",
+    "precache-manifest.8cc1a378c17e5dd2d9a4de8a5e2d80eb.js": "/mastering-react/precache-manifest.8cc1a378c17e5dd2d9a4de8a5e2d80eb.js",
+    "service-worker.js": "/mastering-react/service-worker.js",
+    "static/css/2.8a6da4b6.chunk.css.map": "/mastering-react/static/css/2.8a6da4b6.chunk.css.map",
+    "static/css/main.e527cb9f.chunk.css.map": "/mastering-react/static/css/main.e527cb9f.chunk.css.map",
+    "static/media/font-awesome.css": "/mastering-react/static/media/fontawesome-webfont.fee66e71.woff"
+  }
+}
